@@ -1,0 +1,39 @@
+Developer Experience
+----------------------
+Feels similar to this in .NET 6:
+- dotnet new webapp -o mytestapp
+
+Our sample also explains things in a consumer focused way
+Customers struggle a lot with the cookies, so make that the main focus.
+
+Cookies
+-------
+These have some special rules with localhost
+Use proper URLs so that readers understand the architecture:
+- www.example.com
+- login.example.com
+
+Deals properly with cookies - bad defaults use SameSite=None and require SSL
+Try to use SameSite=strict and support both.
+
+Configuration
+-------------
+I'd like to demonstrate three options via the config file:
+- Local with only HTTP
+- Local with HTTPS - use openssl rather than rubbish MS test certificates
+- Different external SSL, perhaps via NGINX routing to HTTP inside the cluster
+
+Error Handling
+---------------
+No developer hacks or rubbish MS defaults, such as a developer exception page
+Do this to a good level and have an error view to render OAuth and cookie errors
+
+Web Design
+----------
+Use cshtml as little as possible and prefer plain HTML
+Stub javascript and css files with not much in them
+Protected Page to have a logout button
+
+Reverse Proxy
+-------------
+I would like to get this basically working also, and demonstrate how to handle
