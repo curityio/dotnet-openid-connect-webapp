@@ -1,0 +1,35 @@
+Minimal UI
+----------
+- Unauthenticated view with a link to get secured data
+- Protected view after login, with a logout button
+
+Keep this very basic, with some unsecured CSS and JS files in the www folder
+Code feels nice and simple and there is not much of it
+
+Focus our Efforts
+-----------------
+A tutorial that does the hard stuff for developers:
+
+- Cookie settings (SameSite=strict)
+- Cookie encryption cia shared key that would work in a cluster
+- HTTP v HTTPS controlled from config file
+- Gateway basics via deployment folder (HTTP with SSL certs and different external URL)
+
+Use proper URLs so that readers understand the architecture:
+- www.example.com
+- login.example.com
+
+No need for an automated Curity Identity server solution
+Openssl certs for the HTTPS configuration
+
+Microsoft defaults
+------------------
+These are really bad, to use third party cookies:
+- SameSite=None, which requires secure cookies
+- This causes lots of developer pain, which MS attempt to deal with via terrible developer certs
+
+Error Handling
+---------------
+Use a small razor page to capture OAuth and cookie errors
+Ensure error details are output to logs
+Avoid hacky developer specific exception page

@@ -51,16 +51,16 @@ namespace OidcClientDemoApplication
             })
             .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options => {
                 
-                options.Cookie.HttpOnly = true;
+                // This is the strongest setting in production and also supports HTTP on developer workstations
                 options.Cookie.SameSite = SameSiteMode.Strict;
-                options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
             })
             .AddOpenIdConnect(options => {
 
-                options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                // Use the same settings here
                 options.NonceCookie.SameSite = SameSiteMode.Strict;
                 options.CorrelationCookie.SameSite = SameSiteMode.Strict;
                 
+                options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.Authority=Configuration.GetValue<string>("OpenIdConnect:Issuer");
                 options.ClientId=Configuration.GetValue<string>("OpenIdConnect:ClientId");
                 options.ClientSecret=Configuration.GetValue<string>("OpenIdConnect:ClientSecret");

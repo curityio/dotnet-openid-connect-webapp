@@ -8,4 +8,9 @@
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.8" />
   </ItemGroup>
 
+  <!-- Prevent this from being copied to the publish folder -->
+  <ItemGroup>
+    <Content Remove="appsettings.json" />
+  </ItemGroup>
+
 </Project>

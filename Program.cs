@@ -1,4 +1,4 @@
-using System.Net;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
@@ -12,16 +12,11 @@ namespace OidcClientDemoApplication
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+                .ConfigureWebHostDefaults(config =>
                 {
-                    webBuilder.UseStartup<Startup>();
-                    
-                    /* Get this working and show how to use SSL
-                    webBuilder.UseKestrel(options => {
-                        options.Listen(IPAddress.Any, 5000);
-                    });*/
+                    config.UseStartup<Startup>();
                 });
+
     }
 }
