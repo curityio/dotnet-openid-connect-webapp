@@ -47,10 +47,6 @@ namespace OidcClientDemoApplication
         {
             var tokens = await this.RefreshTokens(context);
             await RewriteCookies(tokens, context);
-
-            System.Console.WriteLine(await context.GetTokenAsync(ACCESS_TOKEN));
-            System.Console.WriteLine(await context.GetTokenAsync(REFRESH_TOKEN));
-            System.Console.WriteLine(await context.GetTokenAsync(ID_TOKEN));
         }
 
         /*
