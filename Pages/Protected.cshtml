@@ -1,9 +1,25 @@
 ﻿@page "/protected"
 @model ProtectedModel
 
+<!-- Needed so that POSTs send an anti-forgery token -->
+@addTagHelper*, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<style type="text/css">
+button
+{
+  width: 200px;
+}
+</style>
+
 <h1>Protected View</h1>
 
 <h3>
-    <p>Hello: @Model.Username</a>
-    <p>Access Token: @Model.AccessToken</a>
+    <p>Welcome: @Model.Username</a>
+    <p>Current Access Token: @Model.AccessToken</a>
+    <p>Current Refresh Token: @Model.RefreshToken</a>
+    
+    <form method="post">
+        <p><button value="RefreshToken" asp-page-handler="RefreshToken">Refresh Token</button></p>
+        <p><button value="Logout" asp-page-handler="Logout">Logout</button></p>
+    </form>
 </h3>
