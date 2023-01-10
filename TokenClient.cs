@@ -103,13 +103,14 @@ namespace OidcClientDemoApplication
             // A new ID token is optional
             if (string.IsNullOrWhiteSpace(idToken))
             {
-                refreshToken = await context.GetTokenAsync(ID_TOKEN);
+                idToken = await context.GetTokenAsync(ID_TOKEN);
             }
             newTokens.Add(new AuthenticationToken{ Name = ID_TOKEN, Value = idToken });
 
             // Rewrite cookies
             var properties = context.Features.Get<IAuthenticateResultFeature>().AuthenticateResult.Properties;
             properties.StoreTokens(newTokens);
+            await context.SignInAsync(context.User, properties);
         }
     }
 }
