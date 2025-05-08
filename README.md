@@ -6,7 +6,7 @@ A simple web application in .NET that integrates with the Curity Identity Server
 
 - Follow the tutorial on how to [Configure a Client](https://curity.io/resources/learn/configure-client/). 
 - Add a client with the code-flow capability in the Curity Identity Server. 
-- Add the following redirect URI: `https://www.example.com:5000/signin-oidc`. 
+- Add the following redirect URI: `https://www.example.com:5000/callback`. 
 - Make sure to add the scopes `openid` and `profile`. 
 - Then, update the `ClientId`, `ClientSecret` and `Issuer` in the `appsettings.json` file. 
 - Optionally, adapt the scope.
@@ -29,7 +29,7 @@ The endpoints may differ depending on your infrastructure. If you have deployed 
 
 ## Run the Example App
 
-Ensure that the latest long term support version of [.NET](https://dotnet.microsoft.com/en-us/download) is installed, then run the example:
+Ensure that [.Net 7.0](https://dotnet.microsoft.com/en-us/download) is installed, then run the example:
 
 ```bash
 dotnet build

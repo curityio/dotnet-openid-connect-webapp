@@ -56,15 +56,22 @@ namespace OidcClientDemoApplication
             })
             .AddOpenIdConnect(options => {
 
-                // Use the same settings for temporary cookies
+                // Also use SameSite strict settings for temporary cookies
                 options.NonceCookie.SameSite = SameSiteMode.Strict;
+                options.NonceCookie.Path = "/";
+                options.NonceCookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+                
                 options.CorrelationCookie.SameSite = SameSiteMode.Strict;
+                options.CorrelationCookie.Path = "/";
+                options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+
                 options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 
                 // Set the main OpenID Connect settings
                 options.Authority = Configuration.GetValue<string>("OpenIdConnect:Issuer");
                 options.ClientId = Configuration.GetValue<string>("OpenIdConnect:ClientId");
                 options.ClientSecret = Configuration.GetValue<string>("OpenIdConnect:ClientSecret");
+                options.CallbackPath = "/callback";
                 options.ResponseType = OpenIdConnectResponseType.Code;
                 options.ResponseMode = OpenIdConnectResponseMode.Query;
                 string scopeString = Configuration.GetValue<string>("OpenIDConnect:Scope");
