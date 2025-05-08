@@ -29,7 +29,7 @@ The endpoints may differ depending on your infrastructure. If you have deployed 
 
 ## Run the Example App
 
-Ensure that [.Net 7.0](https://dotnet.microsoft.com/en-us/download) is installed, then run the example:
+Ensure that the latest long term support version of [.NET](https://dotnet.microsoft.com/en-us/download) is installed, then run the example:
 
 ```bash
 dotnet build
