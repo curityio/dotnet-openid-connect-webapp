@@ -72,7 +72,7 @@ namespace OidcClientDemoApplication
                 options.Authority = Configuration.GetValue<string>("OpenIdConnect:Issuer");
                 options.ClientId = Configuration.GetValue<string>("OpenIdConnect:ClientId");
                 options.ClientSecret = Configuration.GetValue<string>("OpenIdConnect:ClientSecret");
-                options.CallbackPath = "/callback";
+                options.CallbackPath = Configuration.GetValue<string>("OpenIdConnect:CallbackPath");
                 options.ResponseType = OpenIdConnectResponseType.Code;
                 options.ResponseMode = OpenIdConnectResponseMode.Query;
                 string scopeString = Configuration.GetValue<string>("OpenIDConnect:Scope");
