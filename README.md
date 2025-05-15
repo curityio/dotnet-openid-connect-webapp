@@ -1,5 +1,8 @@
 # DotNet Core and OpenID Connect - Web App Example
 
+[![Quality](https://img.shields.io/badge/quality-demo-red)](https://curity.io/resources/code-examples/status/)
+[![Availability](https://img.shields.io/badge/availability-source-blue)](https://curity.io/resources/code-examples/status/)
+
 A simple web application in .NET that integrates with the Curity Identity Server using the OpenID Connect protocol.
 
 ## Configure the Curity Identity Server
@@ -18,7 +21,7 @@ This example assumes that the Curity Identity Server and the web app are deploye
 | Name     | URL                                                     | Description |
 |--------- | ------------------------------------------------------- | ----------- |
 | Admin UI | https://login.example.com:6749/admin                    | Web interface for configuring the Curity Identity Server |
-| Issuer   | https://login.example.com:8443/oauth/v2/oauth-anonymous | Endpoint at the Curity Identity Server that serves the OpenID Connect metadata. .Net reads the OpenID Connect metadata to retrieve the settings for communicating with the server, e.g., the endpoints for calls or verification keys.  |
+| Issuer   | https://login.example.com:8443/oauth/v2/oauth-anonymous | Endpoint at the Curity Identity Server that serves the OpenID Connect metadata. .NET reads the OpenID Connect metadata to retrieve the settings for communicating with the server, e.g., the endpoints for calls or verification keys.  |
 | Web App  | https://www.example.com:5000                            | Entry point for the example web app |
 
 The endpoints may differ depending on your infrastructure. If you have deployed the Curity Identity Server and the web app locally (or in a local Docker container), simply add the following lines in the `/etc/hosts` file to resolve the domains to localhost:
@@ -29,7 +32,7 @@ The endpoints may differ depending on your infrastructure. If you have deployed 
 
 ## Run the Example App
 
-Ensure that [.Net 7.0](https://dotnet.microsoft.com/en-us/download) is installed, then run the example:
+Ensure that an up to date [.NET SDK](https://dotnet.microsoft.com/en-us/download) is installed, then run the example:
 
 ```bash
 dotnet build
