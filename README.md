@@ -1,4 +1,4 @@
-# .NET Web App Secured by OpenID Connect
+# Secure a .NET Web App with OpenID Connect
 
 [![Quality](https://img.shields.io/badge/quality-demo-red)](https://curity.io/resources/code-examples/status/)
 [![Availability](https://img.shields.io/badge/availability-source-blue)](https://curity.io/resources/code-examples/status/)
