@@ -51,20 +51,25 @@ namespace OidcClientDemoApplication
             })
             .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options => {
                 
-                // Use the strongest setting in production, which also enables HTTP on developer workstations
+                // Use the strongest cookie settings with best cross site request forgery protection
                 options.Cookie.SameSite = SameSiteMode.Strict;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
             })
             .AddOpenIdConnect(options => {
 
-                // Use the same settings for temporary cookies
-                options.NonceCookie.SameSite = SameSiteMode.Strict;
-                options.CorrelationCookie.SameSite = SameSiteMode.Strict;
                 options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                
+                options.CorrelationCookie.SameSite = SameSiteMode.Strict;
+                options.CorrelationCookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+
+                options.NonceCookie.SameSite = SameSiteMode.Strict;
+                options.NonceCookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
                 
                 // Set the main OpenID Connect settings
                 options.Authority = Configuration.GetValue<string>("OpenIdConnect:Issuer");
                 options.ClientId = Configuration.GetValue<string>("OpenIdConnect:ClientId");
                 options.ClientSecret = Configuration.GetValue<string>("OpenIdConnect:ClientSecret");
+                options.CallbackPath = Configuration.GetValue<string>("OpenIdConnect:CallbackPath");
                 options.ResponseType = OpenIdConnectResponseType.Code;
                 options.ResponseMode = OpenIdConnectResponseMode.Query;
                 string scopeString = Configuration.GetValue<string>("OpenIDConnect:Scope");

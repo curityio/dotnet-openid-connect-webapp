@@ -1,35 +1,45 @@
-# DotNet Core and OpenID Connect - Web App Example
+# Secure a .NET Web App with OpenID Connect
 
-A simple web application in .NET that integrates with the Curity Identity Server using the OpenID Connect protocol.
+[![Quality](https://img.shields.io/badge/quality-demo-red)](https://curity.io/resources/code-examples/status/)
+[![Availability](https://img.shields.io/badge/availability-source-blue)](https://curity.io/resources/code-examples/status/)
+
+A demo web application in .NET, secured using the OpenID Connect protocol.
+
+## Configure the Application
+
+The API uses an `appSettings.json` file to configure its OpenID Connect details:
+
+```json
+{
+  "OpenIDConnect" : {
+    "ClientId": "dotnet-client",
+    "ClientSecret": "U2U9EnSKx31fUnvgGR3coOUszko5MiuCSI2Z_4ogjIiO5-UbBzIBWU6JQQaljEis",
+    "Issuer": "http://login.example.com:8443/oauth/v2/oauth-anonymous",
+    "Scope": "openid profile",
+    "CallbackPath": "/callback",
+    "PostLogoutRedirectUri": "http://www.example.com:5000",
+    "TokenEndpoint": "http://login.example.com:8443/oauth/v2/oauth-token"
+  }
+}
+```
 
 ## Configure the Curity Identity Server
 
-- Follow the tutorial on how to [Configure a Client](https://curity.io/resources/learn/configure-client/). 
-- Add a client with the code-flow capability in the Curity Identity Server. 
-- Add the following redirect URI: `https://www.example.com:5000/signin-oidc`. 
-- Make sure to add the scopes `openid` and `profile`. 
-- Then, update the `ClientId`, `ClientSecret` and `Issuer` in the `appsettings.json` file. 
-- Optionally, adapt the scope.
+Before running the app you need to configure an OpenID provider like a local Docker instance of the Curity Identity Server:
 
-## Endpoints and Domain Names
+- [Run a local Docker instance](https://curity.io/resources/learn/run-curity-docker/).
+- [Configure a client](https://curity.io/resources/learn/configure-client/).
 
-This example assumes that the Curity Identity Server and the web app are deployed on different subdomains and expose the following endpoints:
+The configuration uses local example domains for the web application and the Curity Identity Server.\
+To use them, add the following entries to your local computer's hosts file:
 
-| Name     | URL                                                     | Description |
-|--------- | ------------------------------------------------------- | ----------- |
-| Admin UI | https://login.example.com:6749/admin                    | Web interface for configuring the Curity Identity Server |
-| Issuer   | https://login.example.com:8443/oauth/v2/oauth-anonymous | Endpoint at the Curity Identity Server that serves the OpenID Connect metadata. .Net reads the OpenID Connect metadata to retrieve the settings for communicating with the server, e.g., the endpoints for calls or verification keys.  |
-| Web App  | https://www.example.com:5000                            | Entry point for the example web app |
-
-The endpoints may differ depending on your infrastructure. If you have deployed the Curity Identity Server and the web app locally (or in a local Docker container), simply add the following lines in the `/etc/hosts` file to resolve the domains to localhost:
-
-```
+```text
 127.0.0.1 www.example.com login.example.com
 ```
 
 ## Run the Example App
 
-Ensure that [.Net 7.0](https://dotnet.microsoft.com/en-us/download) is installed, then run the example:
+Ensure that an up to date [.NET SDK](https://dotnet.microsoft.com/en-us/download) is installed, then run the example:
 
 ```bash
 dotnet build
@@ -47,5 +57,5 @@ To run the app in a [Docker](https://docs.docker.com/engine/install/) container,
 
 ## Further Information
 
-- See the [Website Tutorial](https://curity.io/resources/learn/dotnet-openid-connect-website) for further details on this example's security flow.
+- See the [.NET Website Tutorial](https://curity.io/resources/learn/dotnet-openid-connect-website) for further details on the app's code and configuration.
 - Please visit [curity.io](https://curity.io/) for more information about the Curity Identity Server.
